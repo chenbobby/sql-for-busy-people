@@ -12,79 +12,79 @@ import QueryResultsPanel, { QueryResultsPanelProps } from './QueryResultsPanel';
 import { Database } from 'sql.js';
 
 interface ClassroomProps {
-  databasePanelProps?: DatabasePanelProps,
-  queryPanelProps?: QueryPanelProps,
-  queryResultsPanelProps?: QueryResultsPanelProps,
+  db?: Database,
+  tableNames: [string],
+  query: string,
+  setQuery: React.Dispatch<React.SetStateAction<string>>,
 };
 
 const Classroom: React.FC<ClassroomProps> = (props): ReactElement => {
-  if (props.databasePanelProps && props.queryPanelProps && props.queryResultsPanelProps) {
-    return (
-      <main>
-        <Split
-          direction="horizontal"
-          sizes={[55, 45]}
-          snapOffset={0}
-          className="split-horizontal"
-        >
-          <div>
-            <TextbookPanel>
-              {props.children}
-            </TextbookPanel>
-          </div>
-          <div>
-            <Split
-              direction="vertical"
-              sizes={[40, 20, 40]}
-              maxSize={75}
-              snapOffset={0}
-              className="split-horizontal--right"
-            >
-              <div>
-                <DatabasePanel {...props.databasePanelProps} />
-              </div>
-              <div>
-                <QueryPanel {...props.queryPanelProps} />
-              </div>
-              <div>
-                <QueryResultsPanel {...props.queryPanelProps} />
-              </div>
-            </Split>
-          </div>
-        </Split>
-      </main>
-    );
-  }
-
-  if (props.databasePanelProps) {
-    return (
-      <main>
-        <Split
-          direction="horizontal"
-          sizes={[55, 45]}
-          snapOffset={0}
-          className="split-horizontal"
-        >
-          <div>
-            <TextbookPanel>
-              {props.children}
-            </TextbookPanel>
-          </div>
-          <div className="split-horizontal--right">
-            <DatabasePanel {...props.databasePanelProps} />
-          </div>
-        </Split>
-      </main>
-    );
-  }
-
   return (
     <main>
-      <TextbookPanel>
-        {props.children}
-      </TextbookPanel>
+      <Split
+        direction="horizontal"
+        sizes={[55, 45]}
+        snapOffset={0}
+        className="split-horizontal"
+      >
+        <div>
+          <TextbookPanel>
+            {props.children}
+          </TextbookPanel>
+        </div>
+        <div>
+          <Split
+            direction="vertical"
+            sizes={[40, 20, 40]}
+            maxSize={75}
+            snapOffset={0}
+            className="split-horizontal--right"
+          >
+            <div>
+              <DatabasePanel {...props} />
+            </div>
+            <div>
+              <QueryPanel {...props} />
+            </div>
+            <div>
+              <QueryResultsPanel {...props} />
+            </div>
+          </Split>
+        </div>
+      </Split>
     </main>
   );
-}
+};
+
+// if (props.databasePanelProps) {
+//   return (
+//     <main>
+//       <Split
+//         direction="horizontal"
+//         sizes={[55, 45]}
+//         snapOffset={0}
+//         className="split-horizontal"
+//       >
+//         <div>
+//           <TextbookPanel>
+//             {props.children}
+//           </TextbookPanel>
+//         </div>
+//         <div className="split-horizontal--right">
+//           <DatabasePanel {...props.databasePanelProps} />
+//         </div>
+//       </Split>
+//     </main>
+//   );
+// }
+
+// return (
+//   <main>
+//     <TextbookPanel>
+//       {props.children}
+//     </TextbookPanel>
+//   </main>
+// );
+// }
 
 export default Classroom;

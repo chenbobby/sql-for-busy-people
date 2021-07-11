@@ -10,11 +10,15 @@ export interface QueryResultsPanelProps {
 };
 
 const QueryResultsPanel: React.FC<QueryResultsPanelProps> = (props): ReactElement => {
-  let data: any = [];
+  let data: any = ['No Results'];
   console.log(props.query);
-  if (props.db) {
-    console.log('querying results');
-    data = props.db.exec(props.query).pop()?.values;
+  if (props.db && props.query.length > 0) {
+    try {
+      data = props.db.exec(props.query).pop()?.values;
+    } catch (e) {
+      console.error(e);
+      data = [`Database Error: ${e.message}`]
+    }
   }
   return (
     <div className="query-results-panel">

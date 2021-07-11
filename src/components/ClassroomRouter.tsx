@@ -32,42 +32,55 @@ const ClassroomRouter: React.FC = (): ReactElement => {
         <Redirect to={`${ROUTER_PATH_LEARN}/chapter1/lesson1`} />
       </Route>
       <Route path={`${path}/chapter1/lesson1`}>
-        <Classroom databasePanelProps={{ db: db, tableNames: ['table1'] }}>
+        <Classroom
+          db={db}
+          tableNames={['table1']}
+          query={query}
+          setQuery={setQuery}
+        >
           <h1>Chapter 1 Lesson 1</h1>
           <Link to={`${path}/chapter1/lesson2`}>Next Lesson</Link>
         </Classroom>
       </Route>
       <Route path={`${path}/chapter1/lesson2`}>
         <Classroom
-          databasePanelProps={{ db: db, tableNames: ['table1'] }}
-          queryPanelProps={{ query: query, setQuery: setQuery }}
-          queryResultsPanelProps={{ db: db, query: query }}
+          db={db}
+          tableNames={['table1']}
+          query={query}
+          setQuery={setQuery}
         >
           <h1>Chapter 1 Lesson 2</h1>
           <Link to={`${path}/chapter1/lesson1`}>Previous Lesson</Link>
           <Link to={`${path}/chapter1/lesson3`}>Next Lesson</Link>
         </Classroom>
-      </Route>
+      </Route >
       <Route path={`${path}/chapter1/lesson3`}>
-        <Classroom databasePanelProps={{ db: db, tableNames: ['table2'] }}>
-          <h1>Chapter 1 Lesson 3</h1>
-          <Link to={`${path}/chapter1/lesson2`}>Previous Lesson</Link>
-          <Link to={`${path}/chapter1/lesson4`}>Next Lesson</Link>
-        </Classroom>
+        <Classroom
+          db={db}
+          tableNames={['table1']}
+          query={query}
+          setQuery={setQuery}
+        />
       </Route>
       <Route path={`${path}/chapter1/lesson4`}>
         <Classroom
-          databasePanelProps={{ db: db, tableNames: ['table2'] }}
-          queryPanelProps={{ query: query, setQuery: setQuery }}
-          queryResultsPanelProps={{ db: db, query: query }}
+          db={db}
+          tableNames={['table1']}
+          query={query}
+          setQuery={setQuery}
         >
           <h1>Chapter 1 Lesson 4</h1>
           <Link to={`${path}/chapter1/lesson3`}>Previous Lesson</Link>
         </Classroom>
       </Route>
       <Route>
-        <Classroom>
-          <h1>Default Classroom for ClassroomRouter</h1>
+        <Classroom
+          db={db}
+          tableNames={['table1']}
+          query={query}
+          setQuery={setQuery}
+        >
+          Not Found
         </Classroom>
       </Route>
     </Switch >
