@@ -2,3 +2,27 @@
   max-height: 100%;
   overflow: auto;
 }
+
+.editor {
+  counter-reset: line;
+  border: 1px solid #ced4da;
+}
+
+.editor #codeArea {
+  outline: none;
+  padding-left: 60px !important;
+}
+
+.editor pre {
+  padding-left: 60px !important;
+  /* background: rgb(243, 252, 164) !important; */
+}
+
+.editor .editorLineNumber {
+  position: absolute;
+  left: 0px;
+  color: #cccccc;
+  text-align: right;
+  width: 40px;
+  font-weight: 100;
+}

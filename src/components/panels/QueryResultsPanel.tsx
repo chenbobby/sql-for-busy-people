@@ -12,14 +12,14 @@ interface QueryResultsPanelProps {
 
 const QueryResultsPanel: React.FC<QueryResultsPanelProps> = (props) => {
   let data: any = ['No Results'];
-  if (props.db && props.query.length > 0) {
-    try {
-      data = props.db.exec(props.query).pop()?.values;
-    } catch (e) {
-      console.error(e);
-      data = [`Database Error: ${e.message}`]
-    }
-  }
+  // if (props.db && props.query.length > 0) {
+  //   try {
+  //     data = props.db.exec(props.query).pop()?.values;
+  //   } catch (e) {
+  //     console.error(e);
+  //     data = [`Database Error: ${e.message}`]
+  //   }
+  // }
 
   return (
     <div className="query-results-panel">

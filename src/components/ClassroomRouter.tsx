@@ -40,14 +40,16 @@ const ClassroomRouter: React.FC = () => {
         </ClassroomTO>
       </Route>
       <Route path={`${path}/chapter1/lesson2`}>
-        <ClassroomTDB
+        <ClassroomAll
           db={db}
           tableNames={['table1']}
+          query={query}
+          setQuery={setQuery}
         >
           <h1>Chapter 1 Lesson 2</h1>
           <Link to={`${path}/chapter1/lesson1`}>Previous Lesson</Link>
           <Link to={`${path}/chapter1/lesson3`}>Next Lesson</Link>
-        </ClassroomTDB>
+        </ClassroomAll>
       </Route >
       <Route path={`${path}/chapter1/lesson3`}>
         <ClassroomAll

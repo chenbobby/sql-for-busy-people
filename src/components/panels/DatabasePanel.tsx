@@ -20,7 +20,7 @@ const DatabasePanel: React.FC<DatabasePanelProps> = (props) => {
 
   return (
     <div className="database-panel">
-      <h1>Database Panel</h1>
+      <h1>Database Panel 1298356901823598712093587109237590123759807235</h1>
       {props.tableNames.map(tableName => <p key={tableName}>{tableName}</p>)}
       {data.map((row: any, i: number) => <p key={`${i}-${row}`}>{row}</p>)}
     </div>
