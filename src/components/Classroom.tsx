@@ -8,14 +8,17 @@ import QueryPanel, { QueryPanelProps } from './QueryPanel';
 import TextbookPanel from './TextbookPanel';
 
 import './Classroom.css';
+import QueryResultsPanel, { QueryResultsPanelProps } from './QueryResultsPanel';
+import { Database } from 'sql.js';
 
 interface ClassroomProps {
   databasePanelProps?: DatabasePanelProps,
   queryPanelProps?: QueryPanelProps,
+  queryResultsPanelProps?: QueryResultsPanelProps,
 };
 
 const Classroom: React.FC<ClassroomProps> = (props): ReactElement => {
-  if (props.databasePanelProps && props.queryPanelProps) {
+  if (props.databasePanelProps && props.queryPanelProps && props.queryResultsPanelProps) {
     return (
       <main>
         <Split
@@ -29,18 +32,25 @@ const Classroom: React.FC<ClassroomProps> = (props): ReactElement => {
               {props.children}
             </TextbookPanel>
           </div>
-          <Split
-            direction="vertical"
-            sizes={[40, 20, 40]}
-            snapOffset={0}
-          >
-            <div>
-              <DatabasePanel {...props.databasePanelProps} />
-            </div>
-            <div>
-              <QueryPanel {...props.queryPanelProps} />
-            </div>
-          </Split>
+          <div>
+            <Split
+              direction="vertical"
+              sizes={[40, 20, 40]}
+              maxSize={75}
+              snapOffset={0}
+              className="split-horizontal--right"
+            >
+              <div>
+                <DatabasePanel {...props.databasePanelProps} />
+              </div>
+              <div>
+                <QueryPanel {...props.queryPanelProps} />
+              </div>
+              <div>
+                <QueryResultsPanel {...props.queryPanelProps} />
+              </div>
+            </Split>
+          </div>
         </Split>
       </main>
     );
@@ -60,7 +70,7 @@ const Classroom: React.FC<ClassroomProps> = (props): ReactElement => {
               {props.children}
             </TextbookPanel>
           </div>
-          <div>
+          <div className="split-horizontal--right">
             <DatabasePanel {...props.databasePanelProps} />
           </div>
         </Split>

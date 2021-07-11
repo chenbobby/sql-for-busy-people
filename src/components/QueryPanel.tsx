@@ -10,9 +10,10 @@ export interface QueryPanelProps {
 
 const QueryPanel: React.FC<QueryPanelProps> = (props): ReactElement => {
   return (
-    <>
+    <div className="query-panel">
       <h1>Query Panel</h1>
-    </>
+      <input type="text" onChange={(value) => props.setQuery('SELECT * FROM table2;')} />
+    </div>
   );
 }
 
