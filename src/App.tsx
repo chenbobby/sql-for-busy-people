@@ -36,6 +36,9 @@ const App: React.FC = (): ReactElement => {
           <Route path={ROUTER_PATH_LEARN}>
             <ClassroomRouter />
           </Route>
+          <Route>
+            Not Found
+          </Route>
         </Switch>
       </BrowserRouter>
     </>

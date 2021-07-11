@@ -1,5 +1,6 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { Link, Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
+import initSqlJs, { Database } from 'sql.js';
 
 import Classroom from './Classroom';
 import { ROUTER_PATH_LEARN } from '../routes';
@@ -7,6 +8,20 @@ import { ROUTER_PATH_LEARN } from '../routes';
 
 const ClassroomRouter: React.FC = (): ReactElement => {
   let { path } = useRouteMatch();
+  const [db, setDB] = useState<Database>();
+
+  useEffect(() => {
+    (async () => {
+      const SQL = await initSqlJs({
+        locateFile: (filename: string) => `/wasm/${filename}`,
+      });
+      const dbResponse = await fetch("/sqlite3/db.sqlite3");
+      const dbBuffer = await dbResponse.arrayBuffer();
+      const db = new SQL.Database(new Uint8Array(dbBuffer));
+      setDB(db);
+    })();
+  }, []);
+
   return (
     <Switch>
       <Route exact path={[ROUTER_PATH_LEARN]}>
