@@ -8,10 +8,7 @@ export interface QueryPanelProps {
   setQuery: React.Dispatch<React.SetStateAction<string>>,
 };
 
-const QueryPanel: React.FC<QueryPanelProps> = ({
-  query,
-  setQuery,
-}: QueryPanelProps): ReactElement => {
+const QueryPanel: React.FC<QueryPanelProps> = (props): ReactElement => {
   return (
     <>
       <h1>Query Panel</h1>

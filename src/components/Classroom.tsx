@@ -10,17 +10,12 @@ import TextbookPanel from './TextbookPanel';
 import './Classroom.css';
 
 interface ClassroomProps {
-  children: ReactElement,
   databasePanelProps?: DatabasePanelProps,
   queryPanelProps?: QueryPanelProps,
 };
 
-const Classroom: React.FC<ClassroomProps> = ({
-  children,
-  databasePanelProps,
-  queryPanelProps,
-}: ClassroomProps): ReactElement => {
-  if (databasePanelProps && queryPanelProps) {
+const Classroom: React.FC<ClassroomProps> = (props): ReactElement => {
+  if (props.databasePanelProps && props.queryPanelProps) {
     return (
       <main>
         <Split
@@ -29,23 +24,29 @@ const Classroom: React.FC<ClassroomProps> = ({
           snapOffset={0}
           className="split-horizontal"
         >
-          <TextbookPanel>
-            {children}
-          </TextbookPanel>
+          <div>
+            <TextbookPanel>
+              {props.children}
+            </TextbookPanel>
+          </div>
           <Split
             direction="vertical"
             sizes={[40, 20, 40]}
             snapOffset={0}
           >
-            <DatabasePanel {...databasePanelProps} />
-            <QueryPanel {...queryPanelProps} />
+            <div>
+              <DatabasePanel {...props.databasePanelProps} />
+            </div>
+            <div>
+              <QueryPanel {...props.queryPanelProps} />
+            </div>
           </Split>
         </Split>
       </main>
     );
   }
 
-  if (databasePanelProps) {
+  if (props.databasePanelProps) {
     return (
       <main>
         <Split
@@ -54,10 +55,14 @@ const Classroom: React.FC<ClassroomProps> = ({
           snapOffset={0}
           className="split-horizontal"
         >
-          <TextbookPanel>
-            {children}
-          </TextbookPanel>
-          <DatabasePanel {...databasePanelProps} />
+          <div>
+            <TextbookPanel>
+              {props.children}
+            </TextbookPanel>
+          </div>
+          <div>
+            <DatabasePanel {...props.databasePanelProps} />
+          </div>
         </Split>
       </main>
     );
@@ -66,7 +71,7 @@ const Classroom: React.FC<ClassroomProps> = ({
   return (
     <main>
       <TextbookPanel>
-        {children}
+        {props.children}
       </TextbookPanel>
     </main>
   );

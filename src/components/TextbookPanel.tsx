@@ -3,17 +3,13 @@ import React, { ReactElement } from 'react';
 import './TextbookPanel.css';
 
 
-interface TextbookPanelProps {
-  children: ReactElement,
-};
+interface TextbookPanelProps { };
 
-const TextbookPanel: React.FC<TextbookPanelProps> = ({
-  children,
-}: TextbookPanelProps): ReactElement => {
+const TextbookPanel: React.FC<TextbookPanelProps> = (props): ReactElement => {
   return (
     <>
       <h1>Textbook Panel</h1>
-      {children}
+      {props.children}
     </>
   );
 };

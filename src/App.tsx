@@ -1,17 +1,16 @@
 import React, { ReactElement, Suspense } from 'react';
 import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
 
-// import About from './components/About';
-import Classroom from './components/Classroom';
+import ClassroomRouter from './components/ClassroomRouter';
 import NavBar from './components/NavBar';
 import {
   ROUTER_PATH_ABOUT,
-  ROUTER_PATH_CLASSROOM,
   ROUTER_PATH_LANDING,
-  ROUTER_PATH_LESSON,
+  ROUTER_PATH_LEARN,
 } from './routes';
 
 const About = React.lazy(() => import(/* webpackPrefetch: true */ './components/About'));
+
 
 const App: React.FC = (): ReactElement => {
   return (
@@ -34,11 +33,8 @@ const App: React.FC = (): ReactElement => {
               <About />
             </Suspense>
           </Route>
-          <Route exact path={ROUTER_PATH_LESSON}>
-            <Classroom><p>Hi!</p></Classroom>
-          </Route>
-          <Route exact path={'/learn'}>
-            <Redirect to='/learn/chapter1/lesson1' />
+          <Route path={ROUTER_PATH_LEARN}>
+            <ClassroomRouter />
           </Route>
         </Switch>
       </BrowserRouter>
