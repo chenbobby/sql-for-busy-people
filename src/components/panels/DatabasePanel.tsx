@@ -4,17 +4,20 @@ import { Database } from 'sql.js';
 import './DatabasePanel.css';
 
 
-export interface DatabasePanelProps {
+interface DatabasePanelProps {
   db?: Database,
   tableNames: [string],
 };
 
-const DatabasePanel: React.FC<DatabasePanelProps> = (props): ReactElement => {
+
+const DatabasePanel: React.FC<DatabasePanelProps> = (props) => {
   let data: any = [];
+
   if (props.db && props.tableNames.length > 0) {
     const query = `SELECT * FROM ${props.tableNames[0]};`;
     data = props.db.exec(query).pop()?.values;
   }
+
   return (
     <div className="database-panel">
       <h1>Database Panel</h1>
@@ -23,5 +26,6 @@ const DatabasePanel: React.FC<DatabasePanelProps> = (props): ReactElement => {
     </div>
   );
 }
+
 
 export default DatabasePanel;

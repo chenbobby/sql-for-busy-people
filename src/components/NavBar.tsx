@@ -6,7 +6,7 @@ import { ROUTER_PATH_ABOUT, ROUTER_PATH_LEARN, ROUTER_PATH_LANDING } from '../ro
 import './NavBar.css';
 
 
-const NavBar: React.FC = (): ReactElement => {
+const NavBar: React.FC = () => {
   return (
     <nav>
       <h1>SQL for Busy People</h1>

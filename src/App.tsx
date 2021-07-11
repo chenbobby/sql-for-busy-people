@@ -1,5 +1,5 @@
 import React, { ReactElement, Suspense } from 'react';
-import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
 import ClassroomRouter from './components/ClassroomRouter';
 import NavBar from './components/NavBar';
@@ -12,7 +12,7 @@ import {
 const About = React.lazy(() => import(/* webpackPrefetch: true */ './components/About'));
 
 
-const App: React.FC = (): ReactElement => {
+const App: React.FC = () => {
   return (
     <>
       <BrowserRouter>

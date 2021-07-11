@@ -11,6 +11,7 @@ main {
 }
 /*** END Screen Setup ***/
 
+
 /*** Split.js ***/
 .split-horizontal {
   display: flex;
@@ -35,6 +36,7 @@ main {
     cursor: row-resize;
 }
 /*** END Split.js ***/
+
 
 /*** Split Panels ***/
 .split-horizontal--right {

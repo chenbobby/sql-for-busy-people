@@ -2,11 +2,13 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { Link, Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 import initSqlJs, { Database } from 'sql.js';
 
-import Classroom from './Classroom';
+import ClassroomAll from './classrooms/ClassroomAll';
+import ClassroomTDB from './classrooms/ClassroomTDB';
+import ClassroomTO from './classrooms/ClassroomTO';
 import { ROUTER_PATH_LEARN } from '../routes';
 
 
-const ClassroomRouter: React.FC = (): ReactElement => {
+const ClassroomRouter: React.FC = () => {
   let { path } = useRouteMatch();
   const [db, setDB] = useState<Database>();
   const [query, setQuery] = useState<string>('SELECT * FROM table2;');
@@ -32,56 +34,46 @@ const ClassroomRouter: React.FC = (): ReactElement => {
         <Redirect to={`${ROUTER_PATH_LEARN}/chapter1/lesson1`} />
       </Route>
       <Route path={`${path}/chapter1/lesson1`}>
-        <Classroom
-          db={db}
-          tableNames={['table1']}
-          query={query}
-          setQuery={setQuery}
-        >
+        <ClassroomTO>
           <h1>Chapter 1 Lesson 1</h1>
           <Link to={`${path}/chapter1/lesson2`}>Next Lesson</Link>
-        </Classroom>
+        </ClassroomTO>
       </Route>
       <Route path={`${path}/chapter1/lesson2`}>
-        <Classroom
+        <ClassroomTDB
           db={db}
           tableNames={['table1']}
-          query={query}
-          setQuery={setQuery}
         >
           <h1>Chapter 1 Lesson 2</h1>
           <Link to={`${path}/chapter1/lesson1`}>Previous Lesson</Link>
           <Link to={`${path}/chapter1/lesson3`}>Next Lesson</Link>
-        </Classroom>
+        </ClassroomTDB>
       </Route >
       <Route path={`${path}/chapter1/lesson3`}>
-        <Classroom
+        <ClassroomAll
           db={db}
           tableNames={['table1']}
           query={query}
           setQuery={setQuery}
-        />
+        >
+          <h1>Chapter 1 Lesson 3</h1>
+          <Link to={`${path}/chapter1/lesson2`}>Previous Lesson</Link>
+          <Link to={`${path}/chapter1/lesson4`}>Next Lesson</Link>
+        </ClassroomAll>
       </Route>
       <Route path={`${path}/chapter1/lesson4`}>
-        <Classroom
+        <ClassroomTDB
           db={db}
           tableNames={['table1']}
-          query={query}
-          setQuery={setQuery}
         >
           <h1>Chapter 1 Lesson 4</h1>
           <Link to={`${path}/chapter1/lesson3`}>Previous Lesson</Link>
-        </Classroom>
+        </ClassroomTDB>
       </Route>
       <Route>
-        <Classroom
-          db={db}
-          tableNames={['table1']}
-          query={query}
-          setQuery={setQuery}
-        >
+        <ClassroomTO>
           Not Found
-        </Classroom>
+        </ClassroomTO>
       </Route>
     </Switch >
   );

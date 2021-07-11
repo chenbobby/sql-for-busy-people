@@ -3,12 +3,13 @@ import React, { ReactElement } from 'react';
 import './QueryPanel.css';
 
 
-export interface QueryPanelProps {
+interface QueryPanelProps {
   query: string,
   setQuery: React.Dispatch<React.SetStateAction<string>>,
 };
 
-const QueryPanel: React.FC<QueryPanelProps> = (props): ReactElement => {
+
+const QueryPanel: React.FC<QueryPanelProps> = (props) => {
   return (
     <div className="query-panel">
       <h1>Query Panel</h1>
@@ -16,5 +17,6 @@ const QueryPanel: React.FC<QueryPanelProps> = (props): ReactElement => {
     </div>
   );
 }
+
 
 export default QueryPanel;

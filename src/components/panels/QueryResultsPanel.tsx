@@ -4,14 +4,14 @@ import { Database } from 'sql.js';
 import './QueryResultsPanel.css';
 
 
-export interface QueryResultsPanelProps {
+interface QueryResultsPanelProps {
   db?: Database,
   query: string,
 };
 
-const QueryResultsPanel: React.FC<QueryResultsPanelProps> = (props): ReactElement => {
+
+const QueryResultsPanel: React.FC<QueryResultsPanelProps> = (props) => {
   let data: any = ['No Results'];
-  console.log(props.query);
   if (props.db && props.query.length > 0) {
     try {
       data = props.db.exec(props.query).pop()?.values;
@@ -20,6 +20,7 @@ const QueryResultsPanel: React.FC<QueryResultsPanelProps> = (props): ReactElemen
       data = [`Database Error: ${e.message}`]
     }
   }
+
   return (
     <div className="query-results-panel">
       <h1>QueryResults Panel</h1>
@@ -27,5 +28,6 @@ const QueryResultsPanel: React.FC<QueryResultsPanelProps> = (props): ReactElemen
     </div>
   );
 }
+
 
 export default QueryResultsPanel;

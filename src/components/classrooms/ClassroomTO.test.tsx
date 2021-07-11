@@ -1,14 +1,17 @@
 import { render } from '@testing-library/react';
 
-import Classroom from './Classroom';
+import ClassroomTO from './ClassroomTO';
 
 
-describe('Classroom', () => {
+describe('ClassroomTO', () => {
   it('renders a main element', () => {
-    const { getByRole, getByText } = render(<Classroom><p>Hi!</p></Classroom>);
+    const props = { tableNames: ['table1'] as [string] };
+    const { getByRole, getByText } = render(<ClassroomTO {...props}><p>Hi!</p></ClassroomTO>);
+
     const main = getByRole('main');
     expect(main).toBeInTheDocument();
+
     const child = getByText('Hi!');
     expect(child).toBeInTheDocument();
-  })
+  });
 });
