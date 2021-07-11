@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo } from 'react';
+import React from 'react';
 import { Database } from 'sql.js';
 
 import './DatabasePanel.css';

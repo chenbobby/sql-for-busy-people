@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 import initSqlJs, { Database } from 'sql.js';
 

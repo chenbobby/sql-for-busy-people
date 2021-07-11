@@ -1,4 +1,4 @@
-import React, { ReactElement, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
 import ClassroomRouter from './components/ClassroomRouter';
@@ -44,5 +44,6 @@ const App: React.FC = () => {
     </>
   );
 }
+
 
 export default App;

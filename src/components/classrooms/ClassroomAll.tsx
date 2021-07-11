@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React from 'react';
 import Split from 'react-split';
 import { Database } from 'sql.js';
 

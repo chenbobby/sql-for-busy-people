@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { ROUTER_PATH_ABOUT, ROUTER_PATH_LEARN, ROUTER_PATH_LANDING } from '../routes';
@@ -24,5 +24,6 @@ const NavBar: React.FC = () => {
     </nav>
   );
 };
+
 
 export default NavBar;

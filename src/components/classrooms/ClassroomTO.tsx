@@ -1,5 +1,4 @@
-import React, { ReactElement, useState } from 'react';
-import { Database } from 'sql.js';
+import React from 'react';
 
 import TextbookPanel from '../panels/TextbookPanel';
 
