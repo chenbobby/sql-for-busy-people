@@ -1,6 +1,6 @@
 import React from 'react';
 import Split from 'react-split';
-import { Database } from 'sql.js';
+import { Database, QueryExecResult } from 'sql.js';
 
 import DatabasePanel from '../panels/DatabasePanel';
 import QueryPanel from '../panels/QueryPanel';
@@ -15,6 +15,10 @@ interface ClassroomAllProps {
   tableNames: [string],
   query: string,
   setQuery: React.Dispatch<React.SetStateAction<string>>,
+  queryResults: QueryExecResult[],
+  setQueryResults: React.Dispatch<React.SetStateAction<QueryExecResult[]>>,
+  queryError?: Error,
+  setQueryError: React.Dispatch<React.SetStateAction<Error | undefined>>
 };
 
 

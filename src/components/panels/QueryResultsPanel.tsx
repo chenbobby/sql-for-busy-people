@@ -1,30 +1,23 @@
 import React from 'react';
-import { Database } from 'sql.js';
+import { QueryExecResult } from 'sql.js';
 
 import './QueryResultsPanel.css';
 
 
 interface QueryResultsPanelProps {
-  db?: Database,
-  query: string,
+  queryResults: QueryExecResult[],
+  queryError?: Error,
 };
 
 
 const QueryResultsPanel: React.FC<QueryResultsPanelProps> = (props) => {
-  let data: any = ['No Results'];
-  // if (props.db && props.query.length > 0) {
-  //   try {
-  //     data = props.db.exec(props.query).pop()?.values;
-  //   } catch (e) {
-  //     console.error(e);
-  //     data = [`Database Error: ${e.message}`]
-  //   }
-  // }
-
   return (
     <div className="query-results-panel">
       <h1>QueryResults Panel</h1>
-      {data.map((row: any, i: number) => <p key={`${i}-${row}`}>{row}</p>)}
+      {props.queryError && <p>{props.queryError.message}</p>}
+      {props.queryResults?.length > 0 && (
+        props.queryResults[0].values.map((value) => <p>{value}</p>)
+      )}
     </div>
   );
 }

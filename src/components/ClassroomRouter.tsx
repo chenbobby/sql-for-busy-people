@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
-import initSqlJs, { Database } from 'sql.js';
+import initSqlJs, { Database, QueryExecResult } from 'sql.js';
 
 import ClassroomAll from './classrooms/ClassroomAll';
 import ClassroomTDB from './classrooms/ClassroomTDB';
@@ -11,7 +11,9 @@ import { ROUTER_PATH_LEARN } from '../routes';
 const ClassroomRouter: React.FC = () => {
   let { path } = useRouteMatch();
   const [db, setDB] = useState<Database>();
-  const [query, setQuery] = useState<string>('SELECT * FROM table2;');
+  const [query, setQuery] = useState<string>('');
+  const [queryResults, setQueryResults] = useState<QueryExecResult[]>([] as QueryExecResult[]);
+  const [queryError, setQueryError] = useState<Error>();
 
   useEffect(() => {
     (async () => {
@@ -45,6 +47,10 @@ const ClassroomRouter: React.FC = () => {
           tableNames={['table1']}
           query={query}
           setQuery={setQuery}
+          queryResults={queryResults}
+          setQueryResults={setQueryResults}
+          queryError={queryError}
+          setQueryError={setQueryError}
         >
           <h1>Chapter 1 Lesson 2</h1>
           <Link to={`${path}/chapter1/lesson1`}>Previous Lesson</Link>
@@ -57,6 +63,10 @@ const ClassroomRouter: React.FC = () => {
           tableNames={['table1']}
           query={query}
           setQuery={setQuery}
+          queryResults={queryResults}
+          setQueryResults={setQueryResults}
+          queryError={queryError}
+          setQueryError={setQueryError}
         >
           <h1>Chapter 1 Lesson 3</h1>
           <Link to={`${path}/chapter1/lesson2`}>Previous Lesson</Link>
